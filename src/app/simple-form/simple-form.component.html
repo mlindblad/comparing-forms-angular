@@ -1,13 +1,13 @@
-
 <h2>{{name}}</h2>
-
-<label>
+<div>
+	<label>
   Name:
-  <input type="text" [formControl]="name">
+  <input type="text">
 </label>
-<span [hidden]="!errorMessage">{{errorMessage}}</span>
+	<span [hidden]="!errorMessage">{{errorMessage}}</span>
 
-<label>
+	<label>
   Name:
-  <input type="text" [formControl]="name">
+  <input type="text">
 </label>
+</div>
