@@ -7,7 +7,16 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./simple-form.component.css']
 })
 export class SimpleFormComponent {
-  name = 'Simple Form'
+  title = 'Simple Form'
+  name = '';
+  errorMessage = '';
 
-  
+
+  validateInput() {
+    this.errorMessage = '';
+    
+    if (this.name === '') {
+      this.errorMessage = 'Name is required';
+    }
+  }
 }
