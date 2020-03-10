@@ -3,8 +3,8 @@ import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'simple-form',
-  templateUrl: './name-editor.component.html',
-  styleUrls: ['./name-editor.component.css']
+  templateUrl: './simple-form.component.html',
+  styleUrls: ['./simple-form.component.css']
 })
 export class SimpleFormComponent {
   name = 'Simple Form'

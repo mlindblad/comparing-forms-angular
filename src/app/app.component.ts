@@ -11,5 +11,9 @@ export class AppComponent  {
   toggleEditor(type: string) {
     this.formType = type;
   }
+
+  get simpleForm() {
+    return this.formType === 'simple';
+  }
   
 }
