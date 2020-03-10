@@ -19,5 +19,9 @@ export class AppComponent  {
   get templateDrivenForm() {
     return this.formType === 'template-driven'
   }
+
+  get reactiveForm() {
+    return this.formType === 'reactive-form'
+  }
   
 }
