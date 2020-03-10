@@ -8,12 +8,16 @@ import { Component } from '@angular/core';
 export class AppComponent  {
   formType = 'simple'
 
-  toggleEditor(type: string) {
+  toggleForm(type: string) {
     this.formType = type;
   }
 
   get simpleForm() {
     return this.formType === 'simple';
+  }
+
+  get templateDrivenForm() {
+    return this.formType === 'template-driven'
   }
   
 }

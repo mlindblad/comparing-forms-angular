@@ -1,9 +1,10 @@
 <h1>Forms Workshop</h1>
 <nav>
   <a (click)="toggleForm('simple')">Simple form</a>
-  <a (click)="toggleForm('template')">Template driven form</a>
+  <a (click)="toggleForm('template-driven')">Template driven form</a>
   <a (click)="toggleForm('reactive')">Reactive form</a>
 </nav>
 
 <simple-form *ngIf="simpleForm"></simple-form>
+<template-driven-form *ngIf="templateDrivenForm"></template-driven-form>
 
