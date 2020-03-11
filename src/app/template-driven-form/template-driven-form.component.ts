@@ -8,6 +8,4 @@ import { FormControl } from '@angular/forms';
 })
 export class TemplateDrivenFormComponent {
   name = 'Template driven Form'
-
-  
 }

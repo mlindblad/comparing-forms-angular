@@ -8,15 +8,4 @@ import { FormControl } from '@angular/forms';
 })
 export class SimpleFormComponent {
   title = 'Simple Form'
-  name = '';
-  errorMessage = '';
-
-
-  validateInput() {
-    this.errorMessage = '';
-    
-    if (this.name === '') {
-      this.errorMessage = 'Name is required';
-    }
-  }
 }
