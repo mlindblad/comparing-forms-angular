@@ -2,12 +2,17 @@
 <div>
 	<label>
   Name:
-  <input type="text" (keydown)="validateInput()" [(ngModel)]="name">
-</label>
-	<span [hidden]="!errorMessage">{{errorMessage}}</span>
+  <input type="text" (keyup)="validateName()" [(ngModel)]="name">
+  </label>
+	<span [hidden]="!invalidNameErrorMessage" class="errorMessage">{{invalidNameErrorMessage}}</span>
 
 	<label>
   Email:
-  <input type="text">
-</label>
+  <input type="text" (keyup)="validateEmail()" [(ngModel)]="email">
+  </label>
+  <span [hidden]="!invalidEmailErrorMessage" class="errorMessage">{{invalidEmailErrorMessage}}</span>
+
+  <button (click)="validateOnSubmit()"><label>Create user</label></button>
+  <span *ngIf="submitMessage" class="errorMessage">{{submitMessage}}</span>
+  <span *ngIf="successMessage" class="successMessage">{{successMessage}}</span>
 </div>
