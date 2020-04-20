@@ -7,5 +7,8 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./template-driven-form.component.css']
 })
 export class TemplateDrivenFormComponent {
-  name = 'Template driven Form'
+  title = 'Template driven Form'
+
+  displayName = '';
+  email = '';
 }

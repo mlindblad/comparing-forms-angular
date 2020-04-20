@@ -3,9 +3,29 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
 a, button {
   cursor: pointer;
   cursor: hand;
+}
+
+.forms {
+  width: 500px;
+}
+
+.main-page {
+  display: flex;
+  justify-content: center;
+}
+
+.form-selected {
+  color: #039be5;
+  background-color: #CFD8DC;
 }
 
 /* Navigation link styles */
@@ -54,16 +74,22 @@ button {
   margin: 1rem 0;
   height: 2rem;
   background: lightseagreen;
-
-  
+  font-size: 1rem;
+  color: white;
+  font-weight: normal;
+  cursor: hand;
 }
 
 button > label {
   font-size: 1rem;
   color: white;
   font-weight: normal;
-  cursor: pointer;
   cursor: hand;
+}
+
+button:disabled {
+  background: lightgray;
+  cursor: not-allowed;
 }
 
 .errorMessage {
@@ -73,3 +99,8 @@ button > label {
 .successMessage {
   color: seagreen
 }
+
+.hidden {
+  visibility: hidden;
+}
+

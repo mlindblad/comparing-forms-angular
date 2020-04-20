@@ -1,11 +1,13 @@
 <h1>Forms Workshop</h1>
 <nav>
-  <a (click)="toggleForm('simple')">Simple form</a>
-  <a (click)="toggleForm('template-driven')">Template driven form</a>
-  <a (click)="toggleForm('reactive-form')">Reactive form</a>
+    <a [ngClass]="{ 'form-selected': simpleForm }" (click)="toggleForm('simple')">Simple form</a>
+    <a [ngClass]="{ 'form-selected': templateDrivenForm }" (click)="toggleForm('template-driven')"
+        >Template driven form</a
+    >
+    <a [ngClass]="{ 'form-selected': reactiveForm }" (click)="toggleForm('reactive-form')">Reactive form</a>
 </nav>
-
-<simple-form *ngIf="simpleForm"></simple-form>
-<template-driven-form *ngIf="templateDrivenForm"></template-driven-form>
-<reactive-form *ngIf="reactiveForm"></reactive-form>
-
+<div class="forms">
+    <simple-form *ngIf="simpleForm"></simple-form>
+    <template-driven-form *ngIf="templateDrivenForm"></template-driven-form>
+    <reactive-form *ngIf="reactiveForm"></reactive-form>
+</div>

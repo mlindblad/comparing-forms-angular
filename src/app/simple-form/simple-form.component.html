@@ -4,15 +4,15 @@
   Name:
   <input type="text" (keyup)="validateName()" [(ngModel)]="name">
   </label>
-	<span [hidden]="!invalidNameErrorMessage" class="errorMessage">{{invalidNameErrorMessage}}</span>
+	<div [ngClass]="{hidden: !invalidNameErrorMessage}" class="errorMessage">{{invalidNameErrorMessage}}&nbsp;</div>
 
 	<label>
   Email:
   <input type="text" (keyup)="validateEmail()" [(ngModel)]="email">
   </label>
-  <span [hidden]="!invalidEmailErrorMessage" class="errorMessage">{{invalidEmailErrorMessage}}</span>
+  <div [ngClass]="{hidden: !invalidEmailErrorMessage}" class="errorMessage">{{invalidEmailErrorMessage}}&nbsp;</div>
 
-  <button (click)="validateOnSubmit()"><label>Create user</label></button>
+  <button [disabled]="containErrors()" (click)="validateOnSubmit()">Create user</button>
   <span *ngIf="submitMessage" class="errorMessage">{{submitMessage}}</span>
   <span *ngIf="successMessage" class="successMessage">{{successMessage}}</span>
 </div>

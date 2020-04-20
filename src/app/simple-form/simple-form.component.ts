@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'simple-form',
@@ -7,7 +6,7 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./simple-form.component.css']
 })
 export class SimpleFormComponent {
-  title = 'Simple Form'
+  title = 'No angular magic form'
   
   name = '';
   invalidNameErrorMessage = '';
@@ -15,7 +14,6 @@ export class SimpleFormComponent {
   email = '';
   invalidEmailErrorMessage = '';
   submitMessage = ''
-
   successMessage = '';
 
   validateName() {
@@ -50,5 +48,9 @@ export class SimpleFormComponent {
     if (this.submitMessage === '') {
       this.successMessage = 'Hurray. Ok to send form';
     }
+  }
+
+  containErrors(): boolean {
+    return !!this.invalidEmailErrorMessage || !!this.invalidNameErrorMessage;
   }
 }

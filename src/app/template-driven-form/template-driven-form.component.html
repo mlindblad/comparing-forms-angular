@@ -1,13 +1,28 @@
-<h2>{{name}}</h2>
-<div>
-	<label>
-  Name:
-  <input type="text">
-</label>
-	<span [hidden]="!errorMessage">{{errorMessage}}</span>
+<h2>{{ title }}</h2>
+<form (ngSubmit)="onSubmit()" #templateForm="ngForm">
+    <label>
+        Name:
+        <input #spy id="name" type="text" required [(ngModel)]="displayName" name="displayName" #name="ngModel" />
+    </label>
 
-	<label>
-  Email:
-  <input type="text">
-</label>
-</div>
+    <div class="errorMessage" [ngClass]="{ hidden: name.valid || name.pristine }">Name is required</div>
+
+    <label>
+        Email:
+        <input #emailField="ngModel" type="text" required [(ngModel)]="email" name="email" />
+    </label>
+    <div class="errorMessage" [ngClass]="{ hidden: emailField.valid || emailField.pristine }">Email is required</div>
+    <button type="submit" [disabled]="!templateForm.form.valid">Create user</button>
+    <span *ngIf="submitMessage" class="errorMessage">{{ submitMessage }}</span>
+    <span *ngIf="successMessage" class="successMessage">{{ successMessage }}</span>
+</form>
+
+<br />spy on class name: {{ spy.className }}
+
+<ul>
+  <li>An Angular HTML form template</li>
+  <li>form submission by binding to the NgForm.ngSubmit</li>
+  <li>Template-reference variables such as #emailField and #name</li>
+  <li>The reference variable’s valid property on input controls to check if a control is valid and show/hide error messages.</li>
+  <li>Controlling the Submit button's enabled state by binding to NgForm validity.</li>
+</ul>
