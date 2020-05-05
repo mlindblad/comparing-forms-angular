@@ -3,10 +3,12 @@
     <div class="form-control">
         <label>
             Name:
-            <input #spy id="name" type="text" required [(ngModel)]="displayName" name="displayName" #name="ngModel" />
+            <input #spy id="name" type="text" required firstCharUpperCase [(ngModel)]="displayName" name="displayName" #name="ngModel" />
         </label>
 
-        <div class="error-message" *ngIf="(name.touched || submitted) && name.errors?.required">Name is required</div>
+        <div class="error-message" *ngIf="(name.dirty || submitted) && name.errors?.required">Name is required</div>
+
+        <div class="error-message" *ngIf="(name.dirty || submitted) && name.errors?.firstCharUpperCase">First character must be in upper case</div>
     </div>
 
     <div class="form-control">
@@ -14,11 +16,11 @@
             Email:
             <input #emailField="ngModel" type="email" required email [(ngModel)]="email" name="email" />
         </label>
-        <div class="error-message" *ngIf="(emailField.touched || submitted) && emailField.errors?.required">
+        <div class="error-message" *ngIf="(emailField.dirty || submitted) && emailField.errors?.required">
             Email is required
         </div>
 
-        <div class="error-message" *ngIf="(emailField.touched || submitted) && emailField.errors?.email">
+        <div class="error-message" *ngIf="(emailField.dirty || submitted) && emailField.errors?.email">
             Enter valid email
         </div>
     </div>
@@ -33,9 +35,5 @@
 <ul>
     <li>form submission by binding to the NgForm.ngSubmit</li>
     <li>Template-reference variables such as #emailField and #name</li>
-    <li>
-        The reference variable’s valid property on input controls to check if a control is valid and show/hide error
-        messages.
-    </li>
     <li>Controlling the Submit button's enabled state by binding to NgForm validity.</li>
 </ul>

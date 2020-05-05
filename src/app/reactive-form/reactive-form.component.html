@@ -9,6 +9,10 @@
         <div class="error-message" *ngIf="(control.name.touched || submitted) && control.name.errors?.required">
             Name is required
         </div>
+
+        <div class="error-message" *ngIf="(control.name.touched || submitted) && control.name.errors?.firstCharUpperCase">
+            First character must be in upper case
+        </div>
     </div>
 
     <div class="form-control">

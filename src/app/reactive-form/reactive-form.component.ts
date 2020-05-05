@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder, AbstractControl } from '@angular/forms';
+import { CustomvalidationService } from '../services/customvalidation.service';
 
 @Component({
     selector: 'reactive-form',
@@ -13,9 +14,13 @@ export class ReactiveFormComponent {
     submitted = false;
     successMessage = '';
 
+    constructor(
+        private customValidator: CustomvalidationService
+      ) { }
+
     ngOnInit() {
         this.registerForm = new FormGroup({
-            name: new FormControl('', Validators.required),
+            name: new FormControl('', [Validators.required, this.customValidator.firstCharUpperCaseValidator()]),
             email: new FormControl('', [Validators.required, Validators.email]),
         });
     }
