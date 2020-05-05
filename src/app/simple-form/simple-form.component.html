@@ -1,18 +1,23 @@
-<h2>{{title}}</h2>
+<h2>{{ title }}</h2>
 <div>
-	<label>
-  Name:
-  <input type="text" (keyup)="validateName()" [(ngModel)]="name">
-  </label>
-	<div [ngClass]="{hidden: !invalidNameErrorMessage}" class="errorMessage">{{invalidNameErrorMessage}}&nbsp;</div>
+    <div class="form-control">
+        <label>
+            Name:
+            <input type="text" (keyup)="validateName()" [(ngModel)]="name" />
+        </label>
+        <div class="error-message" *ngIf="invalidNameErrorMessage">{{ invalidNameErrorMessage }}&nbsp;</div>
+    </div>
 
-	<label>
-  Email:
-  <input type="text" (keyup)="validateEmail()" [(ngModel)]="email">
-  </label>
-  <div [ngClass]="{hidden: !invalidEmailErrorMessage}" class="errorMessage">{{invalidEmailErrorMessage}}&nbsp;</div>
-
-  <button [disabled]="containErrors()" (click)="validateOnSubmit()">Create user</button>
-  <span *ngIf="submitMessage" class="errorMessage">{{submitMessage}}</span>
-  <span *ngIf="successMessage" class="successMessage">{{successMessage}}</span>
+    <div class="form-control">
+        <label>
+            Email:
+            <input type="text" (keyup)="validateEmail()" [(ngModel)]="email" />
+        </label>
+        <div class="error-message" *ngIf="invalidEmailErrorMessage">
+            {{ invalidEmailErrorMessage }}
+        </div>
+    </div>
+    <button (click)="validateOnSubmit()">Create user</button>
+    <span *ngIf="submitMessage" class="error-message">{{ submitMessage }}</span>
+    <span *ngIf="successMessage" class="success-message">{{ successMessage }}</span>
 </div>

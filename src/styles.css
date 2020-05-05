@@ -28,6 +28,10 @@ a, button {
   background-color: #CFD8DC;
 }
 
+.form-control {
+  margin-bottom: 1rem;
+}
+
 /* Navigation link styles */
 nav a {
   padding: 5px 10px;
@@ -92,11 +96,11 @@ button:disabled {
   cursor: not-allowed;
 }
 
-.errorMessage {
+.error-message {
   color: lightcoral;
 }
 
-.successMessage {
+.success-message {
   color: seagreen
 }
 

@@ -1,13 +1,40 @@
-<h2>{{ name }}</h2>
-<div>
-    <label>
-        Name:
-        <input type="text" />
-    </label>
-    <span [hidden]="!errorMessage">{{ errorMessage }}</span>
+<h2>{{ title }}</h2>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-control">
+        <label>
+            Name:
+            <input #spy id="name" type="text" formControlName="name" />
+        </label>
 
-    <label>
-        Email:
-        <input type="text" />
-    </label>
-</div>
+        <div class="error-message" *ngIf="(control.name.touched || submitted) && control.name.errors?.required">
+            Name is required
+        </div>
+    </div>
+
+    <div class="form-control">
+        <label>
+            Email:
+            <input id="email" type="email" formControlName="email" />
+        </label>
+        <div class="error-message" *ngIf="(control.email.touched || submitted) && control.email.errors?.required">
+            Email is required
+        </div>
+
+        <div class="error-message" *ngIf="(control.email.touched || submitted) && control.email.errors?.email">
+            Enter valid email
+        </div>
+    </div>
+
+    <button type="submit">Create user</button>
+    <span class="error-message" *ngIf="submitMessage">{{ submitMessage }}</span>
+    <span class="success-message" *ngIf="successMessage">{{ successMessage }}</span>
+</form>
+
+<ul>
+    <li>form submission by binding to the NgForm.ngSubmit</li>
+    <li>formControlName - Syncs FormControl in an existing FormGroup instance to a form control element by name</li>
+    <li>
+        control - a reference to form controls
+    </li>
+    <li>control.email.errors and control.name.errors will have values if containing errors</li>
+</ul>

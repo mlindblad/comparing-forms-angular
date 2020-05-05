@@ -1,28 +1,41 @@
 <h2>{{ title }}</h2>
-<form (ngSubmit)="onSubmit()" #templateForm="ngForm">
-    <label>
-        Name:
-        <input #spy id="name" type="text" required [(ngModel)]="displayName" name="displayName" #name="ngModel" />
-    </label>
+<form (ngSubmit)="onSubmit(templateForm.valid)" #templateForm="ngForm">
+    <div class="form-control">
+        <label>
+            Name:
+            <input #spy id="name" type="text" required [(ngModel)]="displayName" name="displayName" #name="ngModel" />
+        </label>
 
-    <div class="errorMessage" [ngClass]="{ hidden: name.valid || name.pristine }">Name is required</div>
+        <div class="error-message" *ngIf="(name.touched || submitted) && name.errors?.required">Name is required</div>
+    </div>
 
-    <label>
-        Email:
-        <input #emailField="ngModel" type="text" required [(ngModel)]="email" name="email" />
-    </label>
-    <div class="errorMessage" [ngClass]="{ hidden: emailField.valid || emailField.pristine }">Email is required</div>
-    <button type="submit" [disabled]="!templateForm.form.valid">Create user</button>
-    <span *ngIf="submitMessage" class="errorMessage">{{ submitMessage }}</span>
-    <span *ngIf="successMessage" class="successMessage">{{ successMessage }}</span>
+    <div class="form-control">
+        <label>
+            Email:
+            <input #emailField="ngModel" type="email" required email [(ngModel)]="email" name="email" />
+        </label>
+        <div class="error-message" *ngIf="(emailField.touched || submitted) && emailField.errors?.required">
+            Email is required
+        </div>
+
+        <div class="error-message" *ngIf="(emailField.touched || submitted) && emailField.errors?.email">
+            Enter valid email
+        </div>
+    </div>
+
+    <button type="submit">Create user</button>
+    <span class="error-message" *ngIf="submitMessage" >{{ submitMessage }}</span>
+    <span class="success-message" *ngIf="successMessage">{{ successMessage }}</span>
 </form>
 
 <br />spy on class name: {{ spy.className }}
 
 <ul>
-  <li>An Angular HTML form template</li>
-  <li>form submission by binding to the NgForm.ngSubmit</li>
-  <li>Template-reference variables such as #emailField and #name</li>
-  <li>The reference variable’s valid property on input controls to check if a control is valid and show/hide error messages.</li>
-  <li>Controlling the Submit button's enabled state by binding to NgForm validity.</li>
+    <li>form submission by binding to the NgForm.ngSubmit</li>
+    <li>Template-reference variables such as #emailField and #name</li>
+    <li>
+        The reference variable’s valid property on input controls to check if a control is valid and show/hide error
+        messages.
+    </li>
+    <li>Controlling the Submit button's enabled state by binding to NgForm validity.</li>
 </ul>

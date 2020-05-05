@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: [ './app.component.css' ]
 })
 export class AppComponent  {
-  formType = 'simple'
+  formType = 'reactive-form'
 
   toggleForm(type: string) {
     this.formType = type;
